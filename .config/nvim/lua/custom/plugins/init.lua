@@ -23,6 +23,9 @@ return {
         filters = {
           git_ignored = false,
           dotfiles = false,
+          custom = {
+            '^\\.git$',
+          },
         },
       }
     end,
