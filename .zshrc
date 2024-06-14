@@ -21,9 +21,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # CUDA
-if [ -d "/usr/local/cuda-12.4" ]; then
-    export PATH="/usr/local/cuda-12.4/bin:$PATH"
-    export LD_LIBRARY_PATH="/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH"
+if [ -d "/usr/local/cuda-12.5" ]; then
+    export PATH="/usr/local/cuda-12.5/bin:$PATH"
+    export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
 fi
 
 # zsh
