@@ -235,6 +235,22 @@ vim.keymap.set('n', '<C-g>', ':LazyGit<CR>', { noremap = true, silent = true })
 -- Esc Esc to :noh
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { noremap = true, silent = true })
 
+-- Diffview
+-- vim.keymap.set('n', '<leader>hd', '<cmd>DiffviewOpen HEAD~1<CR>', { silent = true })
+vim.keymap.set('n', '<leader>hd', function()
+  local base_commit = vim.fn.system('git merge-base main HEAD'):gsub('%s+', '')
+  vim.cmd('DiffviewOpen ' .. base_commit .. '..HEAD')
+end, { silent = true, desc = 'DiffviewOpen <base-commit>..HEAD' })
+
+vim.keymap.set('n', '<leader>hf', '<cmd>DiffviewFileHistory %<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ht', '<cmd>DiffviewToggleFiles<CR>', { silent = true })
+
+-- Octo.vim
+vim.keymap.set('n', '<leader>opl', '<cmd>Octo pr list<CR>', { silent = true })
+vim.keymap.set('n', '<leader>opc', '<cmd>Octo pr create<CR>', { silent = true })
+vim.keymap.set('n', '<leader>oil', '<cmd>Octo issue list<CR>', { silent = true })
+vim.keymap.set('n', '<leader>oic', '<cmd>Octo issue create<CR>', { silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
