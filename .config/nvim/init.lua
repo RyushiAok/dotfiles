@@ -212,6 +212,9 @@ vim.keymap.set('n', '<C-Del>', 'dw', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-BS>', 'db', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-BS>', 'db', { noremap = true, silent = true })
 
+-- Ctrl+[ to exit insert mode
+vim.keymap.set('i', '<C-[>', '<Esc>', { noremap = true, silent = true })
+
 vim.api.nvim_create_autocmd('BufWritePre', {
   buffer = buffer,
   callback = function()
