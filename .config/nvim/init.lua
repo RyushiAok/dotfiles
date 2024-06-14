@@ -954,10 +954,6 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
-      -- https://github.com/windwp/nvim-ts-autotag
-      autotag = {
-        enable = true,
-      },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
