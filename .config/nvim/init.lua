@@ -229,8 +229,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 -- Ctrl+e to :NvimTreeOpen
 vim.keymap.set('n', '<C-e>', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
 
--- Ctrl+g to :LazyGit
--- vim.keymap.set('n', '<C-g>', ':LazyGit<CR>', { noremap = true, silent = true })
+-- tab
+vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { silent = true })
 
 -- Esc Esc to :noh
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { noremap = true, silent = true })
