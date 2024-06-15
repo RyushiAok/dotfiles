@@ -237,8 +237,8 @@ vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { silent = true })
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { noremap = true, silent = true })
 
 -- Diffview
-vim.keymap.set('n', '<C-g>d', '<cmd>DiffviewOpen<CR>', { silent = true })
-vim.keymap.set('n', '<C-g>p', function()
+vim.keymap.set('n', '<leader>hd', '<cmd>DiffviewOpen<CR>', { silent = true })
+vim.keymap.set('n', '<leader>hp', function()
   local base_commit = vim.fn.system('git merge-base main HEAD'):gsub('%s+', '')
   vim.cmd('DiffviewOpen ' .. base_commit .. '..HEAD')
 end, { silent = true, desc = 'DiffviewOpen <base-commit>..HEAD' })
