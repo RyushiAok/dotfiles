@@ -230,14 +230,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 vim.keymap.set('n', '<C-e>', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
 
 -- Ctrl+g to :LazyGit
-vim.keymap.set('n', '<C-g>', ':LazyGit<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-g>', ':LazyGit<CR>', { noremap = true, silent = true })
 
 -- Esc Esc to :noh
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { noremap = true, silent = true })
 
 -- Diffview
--- vim.keymap.set('n', '<leader>hd', '<cmd>DiffviewOpen HEAD~1<CR>', { silent = true })
-vim.keymap.set('n', '<leader>hd', function()
+vim.keymap.set('n', '<C-g>d', '<cmd>DiffviewOpen<CR>', { silent = true })
+vim.keymap.set('n', '<C-g>p', function()
   local base_commit = vim.fn.system('git merge-base main HEAD'):gsub('%s+', '')
   vim.cmd('DiffviewOpen ' .. base_commit .. '..HEAD')
 end, { silent = true, desc = 'DiffviewOpen <base-commit>..HEAD' })
