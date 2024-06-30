@@ -52,6 +52,9 @@ compdef _dotnet_zsh_complete dotnet
 # Add .NET Core SDK tools
 export PATH="$PATH:$HOME/.dotnet/tools"
 
+# Rust
+export RUSTC_WRAPPER=$(which sccache)
+
 setopt auto_cd #一致するディレクトリに cdなしで移動できる
 setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)
 setopt correct_all #コマンドラインの引数のスペルを修正
