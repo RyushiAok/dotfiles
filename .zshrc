@@ -71,5 +71,8 @@ bindkey '\[3\;5~' kill-word
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
+alias ze='zellij'
+alias zef='zellij plugin -- filepicker'
+
 eval "$(starship init zsh)"
 
