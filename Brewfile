@@ -7,7 +7,6 @@ brew "lazygit"
 brew "libuv"
 brew "minimal-racket"
 brew "neovim", args: ["HEAD"]
-brew "pnpm"
 brew "poetry"
 brew "pyenv"
 brew "pyenv-virtualenv"
