@@ -49,3 +49,8 @@ pyenv virtualenv 3.12.2 py3nvim
 pyenv activate py3nvim
 python3 -m pip install pynvim
 ```
+
+
+## VSCode
+
+- [keybindings.json](https://gist.github.com/RyushiAok/744fa2368e22e974390dd59ff9494acf)
