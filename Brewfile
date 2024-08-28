@@ -5,7 +5,6 @@ brew "gh"
 brew "go"
 brew "lazygit"
 brew "libuv"
-brew "minimal-racket"
 brew "neovim", args: ["HEAD"]
 brew "poetry"
 brew "pyenv"
