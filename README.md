@@ -52,5 +52,5 @@ python3 -m pip install pynvim
 
 
 ## VSCode
-
+- [settings.json](https://gist.github.com/RyushiAok/04a683e8d6817bdd2005e867bbd49039)
 - [keybindings.json](https://gist.github.com/RyushiAok/744fa2368e22e974390dd59ff9494acf)
