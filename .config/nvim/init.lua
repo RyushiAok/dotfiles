@@ -466,6 +466,11 @@ require('lazy').setup({
             },
           },
         },
+        typst_lsp = {
+          settings = {
+            exportPdf = 'onSave',
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
