@@ -50,3 +50,6 @@ vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { silent = true })
 
 -- Esc Esc to :noh
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { noremap = true, silent = true })
+
+-- jj to <Esc>
+vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
