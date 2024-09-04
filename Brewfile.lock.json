@@ -2,10 +2,10 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "88ecf2f0f8fe496c2f8994df4d820dd791aea69a"
+        "revision": "980753399e0bc5802610cd1eeacdb16cba53744b"
       },
       "hashicorp/tap": {
-        "revision": "4113156817b9919e00935eb8b535d65fc998a4b8"
+        "revision": "8067f4605138a85067163995151f26b7fa7a18af"
       }
     },
     "brew": {
@@ -98,7 +98,7 @@
         }
       },
       "neovim": {
-        "version": "0.10.1",
+        "version": "HEAD-6f7bb02",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
@@ -1010,6 +1010,12 @@
       },
       "Ubuntu 24.04 LTS (noble)": {
         "HOMEBREW_VERSION": "4.3.17",
+        "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+        "Homebrew/homebrew-core": "api",
+        "GCC": "13.2.0"
+      },
+      "Ubuntu 24.04.1 LTS (noble)": {
+        "HOMEBREW_VERSION": "4.3.18",
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "13.2.0"
