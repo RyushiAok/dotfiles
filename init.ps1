@@ -17,5 +17,8 @@ function Create-Symlink {
     New-Item -ItemType SymbolicLink -Path $link -Target $targetFullPath
     Write-Host "新しいシンボリックリンクを作成しました: $link -> $targetFullPath"
 }
+
+winget import -i winget.json
+
 # シンボリックリンクを作成
 Create-Symlink -target ".config\nvim" -link "$env:USERPROFILE\AppData\Local\nvim"
