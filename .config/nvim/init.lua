@@ -376,7 +376,7 @@ require('lazy').setup({
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- https://docs.astral.sh/ruff/integrations/#language-server-protocol-official
-      require('lspconfig').ruff_lsp.setup {
+      require('lspconfig').ruff.setup {
         on_attach = function(client, bufnr)
           -- Enable completion triggered by <c-x><c-o>
           vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
