@@ -73,27 +73,27 @@ return {
       end,
     },
   },
-  {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      -- OR 'ibhagwan/fzf-lua',
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      vim.keymap.set('n', '<leader>opl', '<cmd>Octo pr list<CR>', { silent = true })
-      vim.keymap.set('n', '<leader>opc', '<cmd>Octo pr create<CR>', { silent = true })
-      vim.keymap.set('n', '<leader>oil', '<cmd>Octo issue list<CR>', { silent = true })
-      vim.keymap.set('n', '<leader>oic', '<cmd>Octo issue create<CR>', { silent = true })
+  -- {
+  --   'pwntester/octo.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-telescope/telescope.nvim',
+  --     -- OR 'ibhagwan/fzf-lua',
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  --   config = function()
+  --     vim.keymap.set('n', '<leader>opl', '<cmd>Octo pr list<CR>', { silent = true })
+  --     vim.keymap.set('n', '<leader>opc', '<cmd>Octo pr create<CR>', { silent = true })
+  --     vim.keymap.set('n', '<leader>oil', '<cmd>Octo issue list<CR>', { silent = true })
+  --     vim.keymap.set('n', '<leader>oic', '<cmd>Octo issue create<CR>', { silent = true })
 
-      require('octo').setup {
-        suppress_missing_scope = {
-          projects_v2 = true,
-        },
-      }
-    end,
-  },
+  --     require('octo').setup {
+  --       suppress_missing_scope = {
+  --         projects_v2 = true,
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     'akinsho/toggleterm.nvim',
     keys = {
