@@ -9,14 +9,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Setup Homebrew
-      #   run: |
-      #     echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
-      #     sudo apt-get install build-essential
+      - name: Install Nix
+        run: |
+          curl -L https://nixos.org/nix/install | sh
+          source ~/.nix-profile/etc/profile.d/nix.sh
 
-      # - name: Run brew bunlde
-      #   run: brew bundle
-      #   continue-on-error: true
+      - name: Install Home Manager
+        run: |
+          nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+          nix-channel --update
+          nix-shell '<home-manager>' -A install
+
+      - name: Apply Home Manager Configuration
+        run: |
+          home-manager switch --file .config/home-manager/home.nix
 
       - name: Run init.sh
         run: ./init.sh
