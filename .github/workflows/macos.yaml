@@ -9,9 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run brew bunlde
-        run: brew bundle
-        continue-on-error: true
+      # - name: Run brew bunlde
+      #   run: brew bundle
+      #   continue-on-error: true
 
       - name: Run init.sh
         run: ./init.sh

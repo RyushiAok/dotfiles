@@ -1,7 +1,0 @@
-tap "homebrew/bundle"
-brew "poetry"
-brew "pyenv"
-brew "pyenv-virtualenv"
-brew "zsh-autosuggestions"
-brew "zsh-completions"
-brew "zsh-syntax-highlighting"

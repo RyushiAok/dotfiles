@@ -9,14 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Homebrew
-        run: |
-          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
-          sudo apt-get install build-essential
+      # - name: Setup Homebrew
+      #   run: |
+      #     echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
+      #     sudo apt-get install build-essential
 
-      - name: Run brew bunlde
-        run: brew bundle
-        continue-on-error: true
+      # - name: Run brew bunlde
+      #   run: brew bundle
+      #   continue-on-error: true
 
       - name: Run init.sh
         run: ./init.sh

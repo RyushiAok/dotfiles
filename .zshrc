@@ -1,12 +1,6 @@
-setopt no_beep
-
-export PATH="$HOME/go/bin:$PATH"
-# COREPACK_ENABLE_STRICT=0
-export COREPACK_ENABLE_STRICT=0
-
-# Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
 
 if [ `uname` != "Darwin" ]; then
     # Java
@@ -15,10 +9,10 @@ if [ `uname` != "Darwin" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# pyenv (nvim)
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# # pyenv (nvim)
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # CUDA
 if [ -d "/usr/local/cuda-12.5" ]; then
@@ -27,13 +21,13 @@ if [ -d "/usr/local/cuda-12.5" ]; then
 fi
 
 # zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-    autoload -Uz compinit
-    compinit
-fi
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# if type brew &>/dev/null; then
+#     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+#     autoload -Uz compinit
+#     compinit
+# fi
 
 # zsh parameter completion for the dotnet CLI
 _dotnet_zsh_complete() {
@@ -55,6 +49,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # Rust
 export RUSTC_WRAPPER=$(which sccache)
 
+setopt no_beep
 setopt auto_cd #一致するディレクトリに cdなしで移動できる
 setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)
 setopt correct_all #コマンドラインの引数のスペルを修正
@@ -78,7 +73,3 @@ alias ze='zellij'
 alias zef='zellij plugin -- filepicker'
 
 eval "$(starship init zsh)"
-
-if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
-  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-fi

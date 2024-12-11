@@ -51,6 +51,12 @@
     pkgs.typst
     pkgs.sccache
     pkgs.ruff-lsp
+    pkgs.pyenv
+    pkgs.poetry
+    pkgs.zsh
+    pkgs.zsh-autosuggestions
+    pkgs.zsh-syntax-highlighting
+    pkgs.zsh-completions
   ];
 
   # enable unfree packages
@@ -93,4 +99,32 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+    # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+    history = {
+      ignoreAllDups = true;
+      path = "${config.home.homeDirectory}/.zsh_history";
+      save = 10000;
+      size = 10000;
+      share = true;
+    };
+
+    historySubstringSearch = {
+      enable = true;
+    };
+
+    envExtra = ''
+      . "$HOME/.cargo/env"
+    '';
+
+    initExtra = ''
+      # starship
+      eval "$(starship init zsh)"
+    '';
+  };
 }
