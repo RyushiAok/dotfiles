@@ -123,6 +123,18 @@
     '';
 
     initExtra = ''
+      # https://github.com/microsoft/terminal/issues/755#issuecomment-530905894
+      bindkey -e
+      # Control + backspace
+      bindkey '^H' backward-kill-word
+      bindkey '\[3\;5~' kill-word
+      # Control + arrows
+      bindkey ";5C" forward-word
+      bindkey ";5D" backward-word
+
+      alias ze='zellij'
+      alias zef='zellij plugin -- filepicker'
+
       # starship
       eval "$(starship init zsh)"
     '';
