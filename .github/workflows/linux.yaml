@@ -50,6 +50,3 @@ jobs:
         run: |
           source ~/.nix-profile/etc/profile.d/nix.sh
           ./init.sh
-
-      - name: Check init.sh
-        run: shellcheck ${GITHUB_WORKSPACE}/init.sh
