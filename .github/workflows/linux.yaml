@@ -21,11 +21,7 @@ jobs:
       - name: Install Nix
         run: |
           curl -L https://nixos.org/nix/install | sh
-          source ~/.nix-profile/etc/profile.d/nix.sh
-
-      - name: Source Nix Environment
-        shell: bash
-        run: echo "source ~/.nix-profile/etc/profile.d/nix.sh" >> $GITHUB_ENV
+          echo "source ~/.nix-profile/etc/profile.d/nix.sh" >> $HOME/.bashrc
 
       - name: Cache Nix Profiles
         uses: actions/cache@v3
