@@ -79,3 +79,6 @@ alias zef='zellij plugin -- filepicker'
 
 eval "$(starship init zsh)"
 
+if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+  . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+fi
