@@ -3,7 +3,7 @@
 ## Setup
 
 ```sh
-bash init.sh
+home-manager switch
 ```
 
 ## WSL Ubuntu
