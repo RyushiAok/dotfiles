@@ -127,7 +127,11 @@
     '';
 
     initExtra = ''
-      # https://github.com/microsoft/terminal/issues/755#issuecomment-530905894
+      if [ -d "/usr/local/cuda-12.5" ]; then
+          export PATH="/usr/local/cuda-12.5/bin:$PATH"
+          export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
+      fi
+      
       setopt no_beep
       setopt auto_cd #一致するディレクトリに cdなしで移動できる
       setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)
@@ -136,6 +140,7 @@
       setopt share_history  #他のzshで履歴を共有する
       setopt inc_append_history #即座に履歴を保存する
 
+      # https://github.com/microsoft/terminal/issues/755#issuecomment-530905894
       bindkey -e
       # Control + backspace
       bindkey '^H' backward-kill-word
