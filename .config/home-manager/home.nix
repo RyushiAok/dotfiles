@@ -71,7 +71,6 @@
     # ".screenrc".source = dotfiles/screenrc;
 
     ".config/karabiner".source = ../karabiner;
-    ".config/nix".source = ../nix;
     ".config/nvim".source = ../nvim;
     ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
