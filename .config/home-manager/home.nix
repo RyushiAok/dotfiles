@@ -100,6 +100,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.bash = {
+    enable = true;
+  };
+
   programs.zsh = {
     # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
     enable = true;
@@ -124,6 +128,14 @@
 
     initExtra = ''
       # https://github.com/microsoft/terminal/issues/755#issuecomment-530905894
+      setopt no_beep
+      setopt auto_cd #一致するディレクトリに cdなしで移動できる
+      setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)
+      setopt correct_all #コマンドラインの引数のスペルを修正
+      setopt hist_ignore_dups #直前と同じコマンドは履歴に追加しない
+      setopt share_history  #他のzshで履歴を共有する
+      setopt inc_append_history #即座に履歴を保存する
+
       bindkey -e
       # Control + backspace
       bindkey '^H' backward-kill-word
