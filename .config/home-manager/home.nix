@@ -70,6 +70,13 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
+    ".config/karabiner".source = ../karabiner;
+    ".config/nix".source = ../nix;
+    ".config/nvim".source = ../nvim;
+    ".config/pypoetry".source = ../pypoetry;
+    ".config/zellij".source = ../zellij;
+    ".rye/config.toml".source = ../../.rye/config.toml;
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -131,7 +138,7 @@
           export PATH="/usr/local/cuda-12.5/bin:$PATH"
           export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
-      
+
       setopt no_beep
       setopt auto_cd #一致するディレクトリに cdなしで移動できる
       setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)

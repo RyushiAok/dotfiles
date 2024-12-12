@@ -48,9 +48,3 @@ jobs:
         run: |
           source ~/.nix-profile/etc/profile.d/nix.sh
           home-manager switch --file .config/home-manager/home.nix
-
-      - name: Run init.sh
-        shell: bash
-        run: |
-          source ~/.nix-profile/etc/profile.d/nix.sh
-          ./init.sh
