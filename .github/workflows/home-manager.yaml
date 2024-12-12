@@ -1,4 +1,4 @@
-name:
+name: CI Workflow
 
 on: [push]
 
@@ -6,39 +6,20 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
 
-      # Cache for Nix Store
-      - name: Cache Nix Store
-        uses: actions/cache@v3
-        with:
-          path: /nix/store
-          key: nix-store-${{ runner.os }}-${{ hashFiles('.config/home-manager/home.nix') }}
-          restore-keys: |
-            nix-store-${{ runner.os }}-
-
       - name: Install Nix
-        run: |
-          curl -L https://nixos.org/nix/install | sh
-          echo "source ~/.nix-profile/etc/profile.d/nix.sh" >> $HOME/.bashrc
-
-      - name: Cache Nix Profiles
-        uses: actions/cache@v3
-        with:
-          path: ~/.nix-profile
-          key: nix-profile-${{ runner.os }}-${{ hashFiles('.config/home-manager/home.nix') }}
-          restore-keys: |
-            nix-profile-${{ runner.os }}-
+        uses: cachix/install-nix-action@v30
 
       - name: Install Home Manager
         shell: bash
         run: |
-          source ~/.nix-profile/etc/profile.d/nix.sh
+          nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
           nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
           nix-channel --update
           nix-shell '<home-manager>' -A install
@@ -46,5 +27,4 @@ jobs:
       - name: Apply Home Manager Configuration
         shell: bash
         run: |
-          source ~/.nix-profile/etc/profile.d/nix.sh
           home-manager switch --file .config/home-manager/home.nix
