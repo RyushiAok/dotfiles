@@ -107,10 +107,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.bash = {
-    enable = true;
-  };
-
   programs.zsh = {
     # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
     enable = true;
