@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 for f in .??*; do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".github" ]] && continue
+    [[ "$f" == ".github/workflows" ]] && continue
     [[ "$f" == ".config" ]] && continue
     [[ "$f" == ".rye" ]] && continue
     ln -snfv "$SCRIPT_DIR/$f" "$HOME/$f" 
