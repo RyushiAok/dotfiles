@@ -3,7 +3,7 @@
 ## Setup
 
 ```sh
-home-manager --extra-experimental-features "nix-command flakes" --flake .#dev@wsl switch --impure
+home-manager --extra-experimental-features "nix-command flakes" --flake .#minimal@linux switch --impure
 ```
 
 ## WSL Ubuntu

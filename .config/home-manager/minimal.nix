@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = builtins.getEnv "USER";
   home.homeDirectory = builtins.getEnv "HOME";
 
@@ -16,28 +14,27 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = [
-    pkgs.nixd
-    pkgs.nixfmt-rfc-style
+    pkgs.neovim
+    pkgs.gcc
+    pkgs.ripgrep
+    pkgs.tailscale
+
+    # git
     pkgs.git
     pkgs.gh
-    pkgs.neovim
-    pkgs.tailscale
-    pkgs.ripgrep
     pkgs.lazygit
-    pkgs.gcc
-    pkgs.go
-    pkgs.terraform
-    pkgs.starship
-    pkgs.volta
-    pkgs.typst
-    pkgs.sccache
-    pkgs.ruff-lsp
-    pkgs.pyenv
-    pkgs.poetry
+
+    # nix
+    pkgs.nixd
+    pkgs.nixfmt-rfc-style
+
+    # shell
     pkgs.zsh
     pkgs.zsh-autosuggestions
     pkgs.zsh-syntax-highlighting
     pkgs.zsh-completions
+    pkgs.starship
+
     # fonts
     pkgs.cascadia-code
     pkgs.nerd-fonts.caskaydia-cove
@@ -52,12 +49,6 @@
     ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
     ".rye/config.toml".source = ../../.rye/config.toml;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
   # Home Manager can also manage your environment variables through

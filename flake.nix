@@ -24,15 +24,25 @@
     in
     {
       homeConfigurations = {
-        "dev@wsl" = home-manager.lib.homeManagerConfiguration {
+        "my@linux" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./.config/home-manager/home.nix ];
+          modules = [ ./.config/home-manager/my.nix ];
         };
-        "dev@mac" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+        "my@mac" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./.config/home-manager/home.nix ];
+          modules = [ ./.config/home-manager/my.nix ];
+        };
+        "minimal@linux" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./.config/home-manager/minimal.nix ];
+        };
+        "minimal@mac" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./.config/home-manager/minimal.nix ];
         };
       };
     };
