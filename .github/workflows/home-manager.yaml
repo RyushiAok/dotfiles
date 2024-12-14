@@ -9,8 +9,8 @@ jobs:
         config:
           - os: ubuntu-latest
             target: dev@wsl
-          # - os: macos-latest
-          #   profile: dev@mac
+          - os: macos-latest
+            target: dev@mac
 
     runs-on: ${{ matrix.config.os }}
 
