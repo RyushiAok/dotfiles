@@ -20,11 +20,8 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v30
 
-      - name: Install Home Manager
-        shell: bash
-        run: nix profile install nixpkgs#home-manager
-
       - name: Apply Home Manager Configuration
         shell: bash
         run: |
+          nix shell nixpkgs#home-manager
           home-manager --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} switch --impure
