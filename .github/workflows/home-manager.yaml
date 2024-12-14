@@ -8,9 +8,9 @@ jobs:
       matrix:
         config:
           - os: ubuntu-latest
-            home_manager_command: 'home-manager --extra-experimental-features "nix-command flakes" --flake .#dev@wsl switch --impure'
-          - os: macos-latest
-            home_manager_command: 'home-manager --extra-experimental-features "nix-command flakes" --flake .#dev@mac switch --impure'
+            target: dev@wsl
+          # - os: macos-latest
+          #   profile: dev@mac
 
     runs-on: ${{ matrix.config.os }}
 
@@ -27,4 +27,4 @@ jobs:
       - name: Apply Home Manager Configuration
         shell: bash
         run: |
-          ${{ matrix.config.home_manager_command }}
+          home-manager --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} switch --impure
