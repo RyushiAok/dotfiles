@@ -48,6 +48,7 @@
   home.file = {
     ".config/karabiner".source = ../karabiner;
     ".config/nvim".source = ../nvim;
+    ".config/nix".source = ../nix;
     ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
     ".rye/config.toml".source = ../../.rye/config.toml;
