@@ -18,12 +18,14 @@
   home.packages = [
     pkgs.go
     pkgs.volta
+    pkgs.rye
     pkgs.ruff-lsp
     pkgs.pyenv
     pkgs.poetry
     pkgs.typst
     pkgs.sccache
     pkgs.terraform
+    pkgs.mint
 
     pkgs.neovim
     pkgs.gcc
@@ -32,6 +34,7 @@
 
     # git
     pkgs.git
+    pkgs.git-lfs
     pkgs.gh
     pkgs.lazygit
 
