@@ -13,31 +13,31 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  home.packages = [
-    pkgs.neovim
-    pkgs.gcc
-    pkgs.ripgrep
-    pkgs.tailscale
+  home.packages = with pkgs; [
+    neovim
+    gcc
+    ripgrep
+    tailscale
 
     # git
-    pkgs.git
-    pkgs.gh
-    pkgs.lazygit
+    git
+    gh
+    lazygit
 
     # nix
-    pkgs.nixd
-    pkgs.nixfmt-rfc-style
+    nixd
+    nixfmt-rfc-style
 
     # shell
-    pkgs.zsh
-    pkgs.zsh-autosuggestions
-    pkgs.zsh-syntax-highlighting
-    pkgs.zsh-completions
-    pkgs.starship
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
+    starship
 
     # fonts
-    pkgs.cascadia-code
-    pkgs.nerd-fonts.caskaydia-cove
+    cascadia-code
+    nerd-fonts.caskaydia-cove
   ];
 
   nixpkgs.config.allowUnfree = true;

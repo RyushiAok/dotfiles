@@ -15,43 +15,43 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  home.packages = [
-    pkgs.go
-    pkgs.volta
-    pkgs.rye
-    pkgs.ruff-lsp
-    pkgs.pyenv
-    pkgs.poetry
-    pkgs.typst
-    pkgs.sccache
-    pkgs.terraform
-    pkgs.mint
+  home.packages = with pkgs; [
+    go
+    volta
+    rye
+    ruff-lsp
+    pyenv
+    poetry
+    typst
+    sccache
+    terraform
 
-    pkgs.neovim
-    pkgs.gcc
-    pkgs.ripgrep
-    pkgs.tailscale
+    neovim
+    gcc
+    ripgrep
+    tailscale
+    direnv
 
     # git
-    pkgs.git
-    pkgs.git-lfs
-    pkgs.gh
-    pkgs.lazygit
+    git
+    git-lfs
+    gh
+    lazygit
 
     # nix
-    pkgs.nixd
-    pkgs.nixfmt-rfc-style
+    nixd
+    nixfmt-rfc-style
 
     # shell
-    pkgs.starship
-    pkgs.zsh
-    pkgs.zsh-autosuggestions
-    pkgs.zsh-syntax-highlighting
-    pkgs.zsh-completions
+    starship
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
 
     # fonts
-    pkgs.cascadia-code
-    pkgs.nerd-fonts.caskaydia-cove
+    cascadia-code
+    nerd-fonts.caskaydia-cove
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -93,7 +93,10 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
   programs.zsh = {
     # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
     enable = true;
@@ -121,7 +124,7 @@
           export PATH="/usr/local/cuda-12.5/bin:$PATH"
           export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
-
+      eval "$(direnv hook zsh)"
       setopt no_beep
       setopt auto_cd #一致するディレクトリに cdなしで移動できる
       setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)
@@ -145,6 +148,19 @@
       # starship
       eval "$(starship init zsh)"
     '';
+
+    plugins = [
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.8.0";
+          sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+        };
+      }
+    ];
   };
 
   fonts.fontconfig.enable = true;
