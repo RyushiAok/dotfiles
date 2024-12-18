@@ -20,15 +20,7 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v30
 
-      - name: Install Home Manager
-        shell: bash
-        run: |
-          nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
-          nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-          nix-channel --update
-          nix-shell '<home-manager>' -A install
-
       - name: Apply Home Manager Configuration
         shell: bash
         run: |
-          home-manager --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} switch --impure
+          nix run home-manager --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} switch --impure
