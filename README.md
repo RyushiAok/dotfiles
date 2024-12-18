@@ -3,7 +3,7 @@
 ## Setup
 
 ```sh
-home-manager --extra-experimental-features "nix-command flakes" --flake .#minimal@linux switch --impure
+nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#minimal@linux--impure
 
 nix run nix-darwin -- switch --flake .#mac --impure
 ```
