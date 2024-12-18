@@ -2,14 +2,7 @@ on: [push]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        config:
-          - os: ubuntu-latest
-            target: minimal@mac
-
-    runs-on: ${{ matrix.config.os }}
-
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
