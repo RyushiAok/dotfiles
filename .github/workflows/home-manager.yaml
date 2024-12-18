@@ -23,4 +23,4 @@ jobs:
       - name: Apply Home Manager Configuration
         shell: bash
         run: |
-          nix run home-manager/master --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} switch --impure
+          nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} --impure
