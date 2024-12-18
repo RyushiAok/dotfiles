@@ -2,8 +2,7 @@
 {
 
   system.stateVersion = 5;
-
-            users.users.takashi.home = "/Users/takashi";
+ 
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -31,11 +30,14 @@
   };
 
   homebrew = {
-    enable = true;
+    enable = true; 
+    taps = [
+      "homebrew/bundle"
+    ];
     casks = [
     ];
     brews = [
       "mint"
     ];
-  }; 
+  };
 }

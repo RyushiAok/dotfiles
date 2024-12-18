@@ -7,9 +7,11 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # Home manager 
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -48,7 +50,7 @@
         };
         "minimal@mac" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs; }; 
           modules = [ ./.config/home-manager/minimal.nix ];
         };
       };
@@ -59,7 +61,8 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.takashi = import ./.config/home-manager/my.nix;
+            users.users.takashi.home = builtins.getEnv "HOME";
+            home-manager.users.${builtins.getEnv "USER"} = import ./.config/home-manager/my.nix;
           }
           ./.config/nix-darwin/configuration.nix
         ];
