@@ -61,7 +61,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            users.users.takashi.home = builtins.getEnv "HOME";
+            users.users.${builtins.getEnv "USER"}.home = builtins.getEnv "HOME";
             home-manager.users.${builtins.getEnv "USER"} = import ./.config/home-manager/my.nix;
           }
           ./.config/nix-darwin/configuration.nix
