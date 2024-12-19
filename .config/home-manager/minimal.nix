@@ -18,6 +18,7 @@
     gcc
     ripgrep
     tailscale
+    direnv
 
     # git
     git
@@ -72,6 +73,17 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  programs.git = {
+    enable = true;
+    ignores = [
+      "**/.envrc"
+      "**/.direnv/"
+    ];
+  };
   programs.zsh = {
     # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
     enable = true;
@@ -95,6 +107,8 @@
           export PATH="/usr/local/cuda-12.5/bin:$PATH"
           export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
+
+      eval "$(direnv hook zsh)"
 
       setopt no_beep
       setopt auto_cd #一致するディレクトリに cdなしで移動できる
