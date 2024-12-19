@@ -46,8 +46,6 @@
     ".config/karabiner".source = ../karabiner;
     ".config/nvim".source = ../nvim;
     ".config/nix".source = ../nix;
-    ".config/pypoetry".source = ../pypoetry;
-    ".config/zellij".source = ../zellij;
     ".rye/config.toml".source = ../../.rye/config.toml;
   };
 
@@ -91,10 +89,6 @@
     historySubstringSearch = {
       enable = true;
     };
-
-    envExtra = ''
-      . "$HOME/.cargo/env"
-    '';
 
     initExtra = ''
       if [ -d "/usr/local/cuda-12.5" ]; then
