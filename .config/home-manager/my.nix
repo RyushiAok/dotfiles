@@ -95,7 +95,14 @@
   programs.home-manager.enable = true;
   programs.direnv = {
     enable = true;
-    enableNixDirenvIntegration = true;
+    nix-direnv.enable = true;
+  };
+  programs.git = {
+    enable = true;
+    ignores = [
+      "**/.envrc"
+      "**/.direnv/"
+    ];
   };
   programs.zsh = {
     # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
