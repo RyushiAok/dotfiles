@@ -2,7 +2,7 @@
 {
 
   system.stateVersion = 5;
- 
+
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -30,7 +30,7 @@
   };
 
   homebrew = {
-    enable = true; 
+    enable = true;
     taps = [
       "homebrew/bundle"
     ];

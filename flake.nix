@@ -7,7 +7,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    # Home manager 
+    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,7 @@
         };
         "minimal@mac" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; }; 
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./.config/home-manager/minimal.nix ];
         };
       };
