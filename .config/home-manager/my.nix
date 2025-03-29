@@ -19,6 +19,7 @@
     go
     volta
     rye
+    uv
     ruff-lsp
     pyenv
     poetry
@@ -37,6 +38,9 @@
     git-lfs
     gh
     lazygit
+
+    #
+    pkg-config
 
     # nix
     nixd
@@ -63,30 +67,8 @@
     ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
     ".rye/config.toml".source = ../../.rye/config.toml;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/takashi/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
@@ -152,6 +134,9 @@
       alias ze='zellij'
       alias zef='zellij plugin -- filepicker'
 
+      export VOLTA_HOME="$HOME/.volta"
+      export PATH="$HOME/.nix-profile/bin:$HOME/.volta/bin:$PATH"
+
       # starship
       eval "$(starship init zsh)"
     '';
@@ -167,6 +152,13 @@
           sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
         };
       }
+    ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
     ];
   };
 
