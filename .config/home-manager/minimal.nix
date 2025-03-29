@@ -47,7 +47,6 @@
     ".config/karabiner".source = ../karabiner;
     ".config/nvim".source = ../nvim;
     ".config/nix".source = ../nix;
-    ".rye/config.toml".source = ../../.rye/config.toml;
   };
 
   # Home Manager can also manage your environment variables through
