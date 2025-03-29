@@ -24,7 +24,6 @@
     poetry
     typst
     sccache
-    terraform
 
     neovim
     gcc
@@ -65,7 +64,6 @@
     ".config/nix".source = ../nix;
     ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
-    ".rye/config.toml".source = ../../.rye/config.toml;
   };
 
   home.sessionVariables = {

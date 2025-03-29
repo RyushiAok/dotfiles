@@ -1,23 +1,8 @@
 {
   "profiles": [
     {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "escキーを押したときに、英数キーも送信する（vim用）",
-            "manipulators": [
-              {
-                "from": { "key_code": "escape" },
-                "to": [
-                  { "key_code": "escape" },
-                  { "key_code": "japanese_eisuu" }
-                ],
-                "type": "basic"
-              }
-            ]
-          }
-        ]
-      },
+      "name": "Default profile",
+      "selected": true,
       "devices": [
         {
           "identifiers": { "is_keyboard": true },
@@ -29,8 +14,20 @@
           ]
         }
       ],
-      "name": "Default profile",
-      "selected": true
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "ESC to ESC and KANA UNLOCK",
+            "manipulators": [
+              {
+                "from": { "key_code": "escape" },
+                "to": [{ "key_code": "lang2" }, { "key_code": "escape" }],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 }

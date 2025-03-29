@@ -4,8 +4,7 @@
 
 ```sh
 nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#minimal@linux --impure
-
-nix run nix-darwin -- switch --flake .#mac --impure
+nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .#mac --impure
 ```
 
 ## WSL Ubuntu
