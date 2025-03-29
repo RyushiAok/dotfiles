@@ -18,7 +18,6 @@
   home.packages = with pkgs; [
     go
     volta
-    rye
     uv
     ruff-lsp
     pyenv
