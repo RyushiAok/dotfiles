@@ -24,7 +24,6 @@
     poetry
     typst
     sccache
-    terraform
 
     neovim
     gcc
