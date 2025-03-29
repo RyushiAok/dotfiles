@@ -29,6 +29,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+
+vim.api.nvim_create_user_command("OpenPdf", function()
+  local filepath = vim.api.nvim_buf_get_name(0)
+  if filepath:match("%.typ$") then
+    os.execute("open " .. vim.fn.shellescape(filepath:gsub("%.typ$", ".pdf")))
+    -- replace open with your preferred pdf viewer
+    -- os.execute("zathura " .. vim.fn.shellescape(filepath:gsub("%.typ$", ".pdf")))
+  end
+end, {})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -466,10 +476,15 @@ require('lazy').setup({
             },
           },
         },
-        typst_lsp = {
+        tinymist = {
+          root_dir = function()
+            return vim.fn.getcwd()
+          end,          
           settings = {
-            exportPdf = 'onSave',
-          },
+            formatterMode = "typstyle",
+            exportPdf = "onType",
+            semanticTokens = "disable"
+          }
         },
       }
 
