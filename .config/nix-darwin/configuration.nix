@@ -35,10 +35,13 @@
       "homebrew/bundle"
     ];
     casks = [
+      "xcodes"
     ];
     brews = [
       "mint"
       "neovim"
+      "xcodesorg/made/xcodes"
+      "aria2"
     ];
   };
 
