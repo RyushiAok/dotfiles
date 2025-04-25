@@ -32,15 +32,15 @@
   homebrew = {
     enable = true;
     taps = [
-      "homebrew/bundle"
     ];
     casks = [
+      "visual-studio-code"
       "xcodes"
+      "warp"
     ];
     brews = [
       "mint"
       "neovim"
-      "xcodesorg/made/xcodes"
       "aria2"
     ];
   };
