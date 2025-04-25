@@ -1,13 +1,21 @@
 # dotfiles
 
+## Prerequisites
+- https://nixos.org/download/
+
 ## Setup
 
+**linux**
 ```sh
 nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#minimal@linux --impure
+```
+
+**mac**
+```sh
 nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .#mac --impure
 ```
 
-## WSL Ubuntu
+## WSL
 
 ### Browser
 
@@ -36,19 +44,6 @@ sudo dpkg -i cudnn-local-repo-ubuntu2204-9.0.0_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu2204-9.0.0/cudnn-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
 sudo apt-get -y install cudnn
-```
-
-### NeoVim
-
-#### Python
-
-https://neovim.io/doc/user/provider.html
-
-```sh
-pyenv install 3.12.2
-pyenv virtualenv 3.12.2 py3nvim
-pyenv activate py3nvim
-python3 -m pip install pynvim
 ```
 
 ## VSCode
