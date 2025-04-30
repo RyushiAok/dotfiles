@@ -37,6 +37,7 @@
       "visual-studio-code"
       "xcodes"
       "warp"
+      "tailscale"
     ];
     brews = [
       "mint"
