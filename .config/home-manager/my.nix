@@ -133,9 +133,6 @@
       alias ze='zellij'
       alias zef='zellij plugin -- filepicker'
 
-      # export VOLTA_HOME="$HOME/.volta"
-      # export PATH="$HOME/.nix-profile/bin:$HOME/.volta/bin:$PATH"
-
       eval "$($(which mise) activate zsh)"
 
       # starship
