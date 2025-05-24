@@ -19,7 +19,7 @@
     go
     mise
     uv
-    ruff-lsp
+    ruff
     pyenv
     poetry
     typst
