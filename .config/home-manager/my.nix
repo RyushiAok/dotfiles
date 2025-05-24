@@ -13,7 +13,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
     go
@@ -107,7 +107,7 @@
       . "$HOME/.cargo/env"
     '';
 
-    initExtra = ''
+    initContent = ''
       if [ -d "/usr/local/cuda-12.5" ]; then
           export PATH="/usr/local/cuda-12.5/bin:$PATH"
           export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"

@@ -1,6 +1,7 @@
-name: CI Workflow
+name: CI
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -8,17 +9,13 @@ jobs:
       matrix:
         config:
           - os: ubuntu-latest
-            target: minimal@linux
-          - os: ubuntu-latest
-            target: minimal@mac
+            target: my@linux
 
     runs-on: ${{ matrix.config.os }}
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@v31
 
       - name: Apply Home Manager Configuration
         shell: bash

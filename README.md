@@ -1,18 +1,21 @@
 # dotfiles
 
 ## Prerequisites
+
 - https://nixos.org/download/
 
 ## Setup
 
 **linux**
+
 ```sh
-nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#minimal@linux --impure
+nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#my@linux --impure
 ```
 
 **mac**
+
 ```sh
-nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .#mac --impure
+sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .#mac --impure
 ```
 
 ## WSL

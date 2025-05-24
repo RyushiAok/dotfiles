@@ -1,13 +1,15 @@
-on: []
+name: CI
+
+on:
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@v31
 
       - name: Apply Configuration
         shell: bash
-        run: nix run nix-darwin -- switch --flake .#mac --impure
+        run: sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .#mac --impure

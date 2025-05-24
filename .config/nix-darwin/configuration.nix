@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
 
   system.stateVersion = 5;
@@ -29,10 +29,46 @@
     };
   };
 
+  # https://github.com/nix-darwin/nix-darwin/blob/master/modules/examples/flake/flake.nix
+  environment.systemPackages = with pkgs; [
+    direnv
+    starship
+    mise
+
+    # git
+    git
+    git-lfs
+    gh
+    lazygit
+
+    # shell
+    starship
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
+
+    # nix
+    nixd
+    nixfmt-rfc-style
+  ];
+
+  programs.direnv = {
+    enable = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    shellInit = ''
+      eval "$($(which mise) activate zsh)"
+      eval "$(direnv hook zsh)"
+      eval "$(starship init zsh)"
+    '';
+  };
+
   homebrew = {
     enable = true;
-    taps = [
-    ];
+    user = user;
     casks = [
       "visual-studio-code"
       "xcodes"

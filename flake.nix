@@ -5,16 +5,16 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/25.05";
 
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -38,31 +38,21 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./.config/home-manager/my.nix ];
         };
-        "my@mac" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./.config/home-manager/my.nix ];
-        };
-        "minimal@linux" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./.config/home-manager/minimal.nix ];
-        };
-        "minimal@mac" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./.config/home-manager/minimal.nix ];
-        };
       };
       darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = {
+          inherit inputs outputs;
+          user =
+            let
+              sudoUser = builtins.getEnv "SUDO_USER";
+              currentUser = builtins.getEnv "USER";
+            in
+            if sudoUser != "" then sudoUser else currentUser;
+        };
         modules = [
-          home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            users.users.${builtins.getEnv "USER"}.home = builtins.getEnv "HOME";
-            home-manager.users.${builtins.getEnv "USER"} = import ./.config/home-manager/my.nix;
+            system.primaryUser = builtins.getEnv "USER";
           }
           ./.config/nix-darwin/configuration.nix
         ];
