@@ -24,21 +24,19 @@
     poetry
     typst
     sccache
-
     neovim
     gcc
     ripgrep
     tailscale
     direnv
+    zellij
+    pkg-config
 
     # git
     git
     git-lfs
     gh
     lazygit
-
-    #
-    pkg-config
 
     # nix
     nixd
@@ -86,12 +84,13 @@
     ];
   };
   programs.zsh = {
-    # https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
+    # https://home-manager-options.extranix.com/?query=zsh
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
     history = {
+      append = true;
       ignoreAllDups = true;
       path = "${config.home.homeDirectory}/.zsh_history";
       save = 10000;
@@ -103,23 +102,25 @@
       enable = true;
     };
 
+    shellAliases = {
+      ze = "zellij";
+      zef = "zellij plugin -- filepicker";
+    };
+
     envExtra = ''
       . "$HOME/.cargo/env"
-    '';
-
-    initContent = ''
       if [ -d "/usr/local/cuda-12.5" ]; then
           export PATH="/usr/local/cuda-12.5/bin:$PATH"
           export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
-      eval "$(direnv hook zsh)"
+      export PATH="$HOME/.dotnet/tools:$PATH"
+    '';
+
+    autocd = true;
+    initContent = ''
       setopt no_beep
-      setopt auto_cd #一致するディレクトリに cdなしで移動できる
-      setopt correct #コマンドのスペルを修正(正しい可能性のある候補を表示)
-      setopt correct_all #コマンドラインの引数のスペルを修正
-      setopt hist_ignore_dups #直前と同じコマンドは履歴に追加しない
-      setopt share_history  #他のzshで履歴を共有する
-      setopt inc_append_history #即座に履歴を保存する
+      setopt correct            # コマンドのスペルを修正(正しい可能性のある候補を表示)
+      setopt correct_all        # コマンドラインの引数のスペルを修正 
 
       # https://github.com/microsoft/terminal/issues/755#issuecomment-530905894
       bindkey -e
@@ -127,16 +128,8 @@
       bindkey '^H' backward-kill-word
       bindkey '\[3\;5~' kill-word
       # Control + arrows
-      bindkey ";5C" forward-word
-      bindkey ";5D" backward-word
-
-      alias ze='zellij'
-      alias zef='zellij plugin -- filepicker'
-
-      eval "$($(which mise) activate zsh)"
-
-      # starship
-      eval "$(starship init zsh)"
+      bindkey ';5C' forward-word
+      bindkey ';5D' backward-word
     '';
 
     plugins = [
@@ -158,6 +151,20 @@
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
     ];
+  };
+
+  programs.zellij = {
+    enableZshIntegration = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   fonts.fontconfig.enable = true;
