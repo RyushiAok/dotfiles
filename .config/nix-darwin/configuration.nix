@@ -34,6 +34,7 @@
     direnv
     starship
     mise
+    tailscale
 
     # git
     git
@@ -73,7 +74,6 @@
       "visual-studio-code"
       "xcodes"
       "warp"
-      "tailscale"
     ];
     brews = [
       "mint"
