@@ -72,6 +72,7 @@
     user = user;
     casks = [
       "visual-studio-code"
+      "cursor"
       "xcodes"
       "warp"
     ];
