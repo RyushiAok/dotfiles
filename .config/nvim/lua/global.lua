@@ -12,4 +12,3 @@ vim.g.have_nerd_font = true
 
 -- https://neovim.io/doc/user/provider.html
 vim.g.python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
-
