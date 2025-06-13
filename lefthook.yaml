@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    nix-format:
+      glob: "*.nix"
+      run: nixfmt {staged_files}
+      stage_fixed: true
+    
+    nix-syntax-check:
+      glob: "*.nix"
+      run: nix-instantiate --parse {staged_files} > /dev/null
+      fail_text: "Nix syntax check failed"

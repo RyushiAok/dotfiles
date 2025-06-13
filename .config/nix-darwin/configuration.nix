@@ -35,6 +35,7 @@
     starship
     mise
     tailscale
+    lefthook
 
     # git
     git

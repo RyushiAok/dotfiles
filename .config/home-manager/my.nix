@@ -31,6 +31,7 @@
     direnv
     zellij
     pkg-config
+    lefthook
 
     # git
     git
