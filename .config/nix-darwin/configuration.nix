@@ -74,6 +74,7 @@
       "visual-studio-code"
       "cursor"
       "xcodes"
+      "raycast"
       "warp"
     ];
     brews = [
