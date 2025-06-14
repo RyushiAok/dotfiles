@@ -62,7 +62,8 @@
   programs.zsh = {
     enable = true;
     shellInit = ''
-      eval "$($(which mise) activate zsh)"
+      eval "$(mise activate zsh)"
+      eval "$(mise activate --shims)"
       eval "$(direnv hook zsh)"
       eval "$(starship init zsh)"
     '';
