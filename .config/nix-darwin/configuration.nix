@@ -31,24 +31,21 @@
 
   # https://github.com/nix-darwin/nix-darwin/blob/master/modules/examples/flake/flake.nix
   environment.systemPackages = with pkgs; [
-    direnv
-    starship
     mise
-    tailscale
-    lefthook
+    zellij
 
     # git
     git
     git-lfs
     gh
     lazygit
+    lefthook
 
     # shell
     starship
-    zsh
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-completions
+
+    # network
+    tailscale
 
     # nix
     nixd

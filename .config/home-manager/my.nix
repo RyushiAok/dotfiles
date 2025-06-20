@@ -16,39 +16,28 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    go
-    mise
-    uv
+    gcc
+    ripgrep
+    pkg-config
+    sccache
+    tailscale
+
+    # typst
+    typst
+    tinymist
+
+    # python
     ruff
     pyenv
     poetry
-    typst
-    sccache
-    neovim
-    gcc
-    ripgrep
-    tailscale
-    direnv
-    zellij
-    pkg-config
-    lefthook
 
     # git
-    git
-    git-lfs
     gh
-    lazygit
+    lefthook
 
     # nix
     nixd
     nixfmt-rfc-style
-
-    # shell
-    starship
-    zsh
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-completions
 
     # fonts
     cascadia-code
@@ -70,6 +59,7 @@
   };
 
   # Let Home Manager install and manage itself.
+  # https://search.nixos.org/options
   programs.home-manager.enable = true;
   programs.direnv = {
     enable = true;
@@ -83,6 +73,12 @@
       "**/.envrc"
       "**/.direnv/"
     ];
+    lfs = {
+      enable = true;
+    };
+  };
+  programs.lazygit = {
+    enable = true;
   };
   programs.zsh = {
     # https://home-manager-options.extranix.com/?query=zsh
