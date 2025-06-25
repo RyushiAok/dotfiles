@@ -15,6 +15,7 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  # https://search.nixos.org/options
   home.packages = with pkgs; [
     gcc
     ripgrep
@@ -34,6 +35,8 @@
     # git
     gh
     lefthook
+    ghq
+    fzf
 
     # nix
     nixd
@@ -111,6 +114,7 @@
           export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
       export PATH="$HOME/.dotnet/tools:$PATH"
+      export GHQ_ROOT="$HOME/repo"
     '';
 
     autocd = true;
@@ -127,6 +131,15 @@
       # Control + arrows
       bindkey ';5C' forward-word
       bindkey ';5D' backward-word
+
+      ghq-jump-widget() {
+        local repo
+        repo=$(ghq list -p | fzf --height 50% --reverse --prompt="ghq> ") || return
+        BUFFER="cd $repo"
+        zle accept-line
+      }
+      zle -N ghq-jump-widget
+      bindkey '^[g' ghq-jump-widget # Alt-g
     '';
 
     plugins = [
