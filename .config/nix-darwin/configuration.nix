@@ -40,6 +40,8 @@
     gh
     lazygit
     lefthook
+    ghq
+    fzf
 
     # shell
     starship
@@ -63,6 +65,16 @@
       eval "$(mise activate --shims)"
       eval "$(direnv hook zsh)"
       eval "$(starship init zsh)"
+
+      export GHQ_ROOT="$HOME/repo"
+      ghq-jump-widget() {
+        local repo
+        repo=$(ghq list -p | fzf --height 50% --reverse --prompt="ghq> ") || return
+        BUFFER="cd $repo"
+        zle accept-line
+      }
+      zle -N ghq-jump-widget
+      bindkey '©' ghq-jump-widget # opt-g
     '';
   };
 
