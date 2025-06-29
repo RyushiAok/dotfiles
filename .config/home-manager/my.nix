@@ -49,10 +49,17 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+  nix.package = pkgs.nix;
+
   home.file = {
     ".config/karabiner".source = ../karabiner;
     ".config/nvim".source = ../nvim;
-    ".config/nix".source = ../nix;
     ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
   };
