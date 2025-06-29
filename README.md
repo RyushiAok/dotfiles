@@ -18,6 +18,12 @@ nix run home-manager/master -- switch --extra-experimental-features "nix-command
 sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake .#mac --impure
 ```
 
+## Test
+
+```sh
+act -W .github/workflows/home-manager.yaml workflow_dispatch
+```
+
 ## WSL
 
 ### Browser

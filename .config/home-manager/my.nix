@@ -22,6 +22,7 @@
     pkg-config
     sccache
     tailscale
+    act
 
     # typst
     typst
