@@ -61,6 +61,10 @@
   programs.zsh = {
     enable = true;
     shellInit = ''
+      # Disable auto-correction
+      unsetopt correct
+      unsetopt correct_all
+
       eval "$(mise activate zsh)"
       eval "$(mise activate --shims)"
       eval "$(direnv hook zsh)"
