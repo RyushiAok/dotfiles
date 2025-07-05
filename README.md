@@ -9,7 +9,10 @@
 **linux**
 
 ```sh
-nix --extra-experimental-features 'nix-command flakes' run home-manager/master -- switch --flake .#my@linux --impure
+nix --extra-experimental-features 'nix-command flakes' \
+  run home-manager/master -- \
+  --extra-experimental-features 'nix-command flakes' \
+  switch --flake .#my@linux --impure
 ```
 
 **mac**
