@@ -1,11 +1,16 @@
 name: CI
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        config:
+          - os: macos-15
+
+    runs-on: ${{ matrix.config.os }}
+
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v31

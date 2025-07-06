@@ -1,7 +1,6 @@
 name: CI
 
-on:
-  workflow_dispatch:
+on: push
 
 jobs:
   build:
@@ -9,7 +8,6 @@ jobs:
       matrix:
         config:
           - os: ubuntu-latest
-            target: my@linux
 
     runs-on: ${{ matrix.config.os }}
 
@@ -20,4 +18,4 @@ jobs:
       - name: Apply Home Manager Configuration
         shell: bash
         run: |
-          nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#${{ matrix.config.target }} --impure
+          nix run home-manager/master -- switch --extra-experimental-features "nix-command flakes" --flake .#linux --impure
