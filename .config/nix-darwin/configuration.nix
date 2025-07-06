@@ -73,7 +73,7 @@
       export GHQ_ROOT="$HOME/repo"
       ghq-jump-widget() {
         local repo
-        repo=$(ghq list -p | fzf --height 50% --reverse --prompt="ghq> ") || return
+        repo=$({ ghq list -p; echo "$HOME/dotfiles"; } | fzf --height 50% --reverse --prompt="ghq> ") || return
         BUFFER="cd $repo"
         zle accept-line
       }
