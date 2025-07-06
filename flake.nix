@@ -1,13 +1,9 @@
-# https://github.com/Misterio77/nix-starter-configs/blob/main/minimal/flake.nix
-
 {
-  description = "Your new nix config";
+  description = "dotfiles flake";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/25.05";
 
-    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,8 +29,8 @@
     in
     {
       homeConfigurations = {
-        "my@linux" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        "linux" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./.config/home-manager/my.nix ];
         };

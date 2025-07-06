@@ -13,10 +13,10 @@
 nix --extra-experimental-features 'nix-command flakes' \
   run home-manager/master -- \
   --extra-experimental-features 'nix-command flakes' \
-  switch --flake .#my@linux --impure
+  switch --flake .#linux --impure
 
 # 2回目以降
-nix run home-manager/master -- switch --flake .#my@linux --impure
+nix run home-manager/master -- switch --flake .#linux --impure
 ```
 
 **mac**
