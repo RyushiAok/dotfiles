@@ -78,7 +78,7 @@
         zle accept-line
       }
       zle -N ghq-jump-widget
-      bindkey '©' ghq-jump-widget # opt-g
+      bindkey '^f' ghq-jump-widget # Ctrl-f
     '';
   };
 
