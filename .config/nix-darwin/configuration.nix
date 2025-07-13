@@ -62,8 +62,8 @@
     enable = true;
     shellInit = ''
       # Disable auto-correction
-      unsetopt correct
-      unsetopt correct_all
+      unsetopt CORRECT
+      unsetopt CORRECT_ALL
 
       eval "$(mise activate zsh)"
       eval "$(mise activate --shims)"
