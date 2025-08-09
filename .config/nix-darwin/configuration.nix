@@ -61,14 +61,11 @@
   programs.zsh = {
     enable = true;
     shellInit = ''
-      # Disable auto-correction
-      unsetopt CORRECT
-      unsetopt CORRECT_ALL
-
       eval "$(mise activate zsh)"
       eval "$(mise activate --shims)"
       eval "$(direnv hook zsh)"
       eval "$(starship init zsh)"
+      eval "$(rbenv init - zsh)"
 
       export GHQ_ROOT="$HOME/repo"
       ghq-jump-widget() {
@@ -79,6 +76,8 @@
       }
       zle -N ghq-jump-widget
       bindkey '^f' ghq-jump-widget # Ctrl-f
+
+      unsetopt correct correctall
     '';
   };
 
