@@ -21,7 +21,6 @@
     ripgrep
     pkg-config
     sccache
-    tailscale
     act
 
     # typst
@@ -117,9 +116,9 @@
 
     envExtra = ''
       . "$HOME/.cargo/env"
-      if [ -d "/usr/local/cuda-12.5" ]; then
-          export PATH="/usr/local/cuda-12.5/bin:$PATH"
-          export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
+      if [ -d "/usr/local/cuda-12.6" ]; then
+        export PATH="/usr/local/cuda-12.6/bin:$PATH"
+        export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
       export PATH="$HOME/.dotnet/tools:$PATH"
       export GHQ_ROOT="$HOME/repo"
