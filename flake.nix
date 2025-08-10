@@ -26,8 +26,21 @@
     }@inputs:
     let
       inherit (self) outputs;
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
     in
     {
+      packages = forAllSystems (system: {
+        cleanup-nix-backups = nixpkgs.legacyPackages.${system}.writeShellScriptBin "cleanup-nix-backups" ''
+          #!/bin/bash
+          set -euo pipefail
+          sudo find /etc -maxdepth 3 -name "*.backup-before-nix" 2>/dev/null | tee /dev/stderr
+          sudo find /etc -maxdepth 3 -name "*.backup-before-nix" -delete 2>/dev/null
+        '';
+      });
+
       homeConfigurations = {
         "linux" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
