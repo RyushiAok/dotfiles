@@ -29,8 +29,7 @@
 
     # python
     ruff
-    pyenv
-    poetry
+    uv
 
     # git
     gh
@@ -60,7 +59,6 @@
   home.file = {
     ".config/karabiner".source = ../karabiner;
     ".config/nvim".source = ../nvim;
-    ".config/pypoetry".source = ../pypoetry;
     ".config/zellij".source = ../zellij;
   };
 
