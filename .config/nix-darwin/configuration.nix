@@ -34,6 +34,11 @@
     mise
     zellij
 
+    # aws
+    awscli2
+    aws-vault
+    ssm-session-manager-plugin
+
     # git
     git
     git-lfs

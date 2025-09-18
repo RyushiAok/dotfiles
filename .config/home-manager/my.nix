@@ -23,6 +23,11 @@
     sccache
     act
 
+    # aws
+    awscli2
+    aws-vault
+    ssm-session-manager-plugin
+
     # typst
     typst
     tinymist
@@ -31,6 +36,7 @@
     ruff
     pyenv
     poetry
+    uv
 
     # git
     gh
