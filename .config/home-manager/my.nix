@@ -25,6 +25,7 @@
 
     icu
     libxml2
+    libxcrypt
 
     # aws
     awscli2
@@ -130,7 +131,27 @@
         export PATH="/usr/local/cuda-12.6/bin:$PATH"
         export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
       fi
-      export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc ]}:$LD_LIBRARY_PATH"
+      export LD_LIBRARY_PATH="${
+        pkgs.lib.makeLibraryPath [
+          pkgs.stdenv.cc.cc
+          pkgs.libxcrypt
+        ]
+      }:$LD_LIBRARY_PATH"
+      export C_INCLUDE_PATH="${
+        pkgs.lib.makeSearchPath "include" [
+          pkgs.libxcrypt
+        ]
+      }:$C_INCLUDE_PATH"
+      export LIBRARY_PATH="${
+        pkgs.lib.makeLibraryPath [
+          pkgs.libxcrypt
+        ]
+      }:$LIBRARY_PATH"
+      export PKG_CONFIG_PATH="${
+        pkgs.lib.makeSearchPath "lib/pkgconfig" [
+          pkgs.libxcrypt
+        ]
+      }:$PKG_CONFIG_PATH"
       export PATH="$HOME/.dotnet/tools:$PATH"
       export GHQ_ROOT="$HOME/repo"
     '';
