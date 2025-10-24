@@ -155,6 +155,7 @@
       }:$PKG_CONFIG_PATH"
       export PATH="$HOME/.dotnet/tools:$PATH"
       export GHQ_ROOT="$HOME/repo"
+      export PATH="$HOME/.local/bin:$PATH"
     '';
 
     autocd = true;
