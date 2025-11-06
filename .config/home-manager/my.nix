@@ -88,8 +88,10 @@
   };
   programs.git = {
     enable = true;
-    userName = "RyushiAok";
-    userEmail = "55625375+RyushiAok@users.noreply.github.com";
+    settings.user = {
+      name = "RyushiAok";
+      email = "55625375+RyushiAok@users.noreply.github.com";
+    };
     ignores = [
       "**/.envrc"
       "**/.direnv/"
