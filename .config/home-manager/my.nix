@@ -130,9 +130,9 @@
 
     envExtra = ''
       . "$HOME/.cargo/env"
-      if [ -d "/usr/local/cuda-12.6" ]; then
-        export PATH="/usr/local/cuda-12.6/bin:$PATH"
-        export LD_LIBRARY_PATH="/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH"
+      if [ -d "/usr/local/cuda-13.0" ]; then
+        export PATH="/usr/local/cuda-13.0/bin:$PATH"
+        export LD_LIBRARY_PATH="/usr/local/cuda-13.0/lib64:$LD_LIBRARY_PATH"
       fi
       export LD_LIBRARY_PATH="${
         pkgs.lib.makeLibraryPath [
