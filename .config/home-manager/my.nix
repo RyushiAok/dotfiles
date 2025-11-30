@@ -22,7 +22,7 @@
     pkg-config
     sccache
     act
-    dotnet-sdk_9
+    dotnet-sdk_10
 
     icu
     libxml2
