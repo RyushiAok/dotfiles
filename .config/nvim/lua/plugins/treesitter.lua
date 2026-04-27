@@ -1,18 +1,22 @@
 return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
-    opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'python', 'vimdoc' },
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
+    config = function()
+      require('nvim-treesitter').setup({})
+
+      local group = vim.api.nvim_create_augroup('vim-treesitter-start', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        group = group,
+        callback = function(ctx)
+          pcall(vim.treesitter.start)
+
+          if ctx.match ~= 'ruby' then
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
     end,
   },
 } 
