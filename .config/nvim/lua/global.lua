@@ -10,5 +10,5 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
--- https://neovim.io/doc/user/provider.html
-vim.g.python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
+-- -- https://neovim.io/doc/user/provider.html
+-- vim.g.python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
