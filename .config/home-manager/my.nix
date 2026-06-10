@@ -13,7 +13,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 
   # https://search.nixos.org/options
   home.packages = with pkgs; [
@@ -49,7 +49,7 @@
 
     # nix
     nixd
-    nixfmt-rfc-style
+    nixfmt
 
     # fonts
     cascadia-code
@@ -127,6 +127,7 @@
 
     envExtra = ''
       . "$HOME/.cargo/env"
+      export PATH="$HOME/.elan/bin:$PATH"
       if [ -d "/usr/local/cuda-13.0" ]; then
         export PATH="/usr/local/cuda-13.0/bin:$PATH"
         export LD_LIBRARY_PATH="/usr/local/cuda-13.0/lib64:$LD_LIBRARY_PATH"
@@ -202,6 +203,31 @@
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
     ];
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "autumn_night_transparent";
+      editor.cursor-shape = {
+        normal = "block";
+        insert = "bar";
+        select = "underline";
+      };
+    };
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      }
+    ];
+    themes = {
+      autumn_night_transparent = {
+        "inherits" = "autumn_night";
+        "ui.background" = { };
+      };
+    };
   };
 
   programs.zellij = {
