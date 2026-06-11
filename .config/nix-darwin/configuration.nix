@@ -85,10 +85,12 @@
 
   programs.zsh = {
     enable = true;
+    promptInit = ''
+      eval "$(${pkgs.starship}/bin/starship init zsh)"
+    '';
     interactiveShellInit = ''
       eval "$(mise activate zsh)"
       eval "$(mise activate --shims)"
-      eval "$(starship init zsh)"
       # eval "$(rbenv init - zsh)"
       if [ -x /opt/homebrew/bin/brew ]; then
         export HOMEBREW_PREFIX="/opt/homebrew"
