@@ -132,7 +132,6 @@
       "gitify"
       "karabiner-elements"
       "notion"
-      "session-manager-plugin"
       "visual-studio-code"
       "xcodes-app"
     ];
