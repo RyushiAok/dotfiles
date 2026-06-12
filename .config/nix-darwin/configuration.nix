@@ -48,6 +48,7 @@
     zsh-autosuggestions
     zsh-syntax-highlighting
 
+    dotnet-sdk_10
     # git
     git
     git-lfs
@@ -100,6 +101,9 @@
         case ":$PATH:" in *":/opt/homebrew/sbin:"*) ;; *) export PATH="$PATH:/opt/homebrew/sbin" ;; esac
       fi
       export GHQ_ROOT="$HOME/repo"
+      export DOTNET_ROOT="${pkgs.dotnet-sdk_10}/share/dotnet"
+      export DOTNET_ROOT_ARM64="$DOTNET_ROOT"
+      export PATH="$HOME/.dotnet/tools:$PATH"
       ghq-jump-widget() {
         local repo
         repo=$({ ghq list -p; } | fzf --height 50% --reverse --prompt="ghq> ") || return
