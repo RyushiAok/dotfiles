@@ -71,6 +71,7 @@
     mint
     mysql84
     pkg-config
+    tinymist
 
     # # network
     # tailscale
