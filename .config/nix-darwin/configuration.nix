@@ -78,7 +78,7 @@
 
     # nix
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   programs.direnv = {
