@@ -79,6 +79,7 @@
     # nix
     nixd
     nixfmt
+    nh
   ];
 
   programs.direnv = {
