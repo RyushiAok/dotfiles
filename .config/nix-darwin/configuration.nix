@@ -36,7 +36,7 @@
     aws-vault
     ssm-session-manager-plugin
 
-    # shell
+    # terminal
     mise
     starship
     direnv
@@ -47,6 +47,7 @@
     zellij
     zsh-autosuggestions
     zsh-syntax-highlighting
+    herdr
 
     dotnet-sdk_10
     # git
@@ -116,9 +117,15 @@
       bindkey '^f' ghq-jump-widget # Ctrl-f
 
       unsetopt correct correctall
+
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     '';
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+  };
+
+  environment.shellAliases = {
+    ze = "zellij";
+    zef = "zellij plugin -- filepicker";
   };
 
   homebrew = {
