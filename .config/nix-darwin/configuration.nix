@@ -60,7 +60,7 @@
     delta
 
     # terraform / infra
-    terraform
+    tenv
     terraform-ls
     atlas
 
