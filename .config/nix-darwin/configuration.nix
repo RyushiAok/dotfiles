@@ -15,6 +15,7 @@
   };
 
   system = {
+    startup.chime = false;
     defaults = {
       NSGlobalDomain.AppleShowAllExtensions = true;
       finder = {
