@@ -33,55 +33,67 @@
   # https://github.com/nix-darwin/nix-darwin/blob/master/modules/examples/flake/flake.nix
   environment.systemPackages = with pkgs; [
     # aws
-    awscli2
     aws-vault
+    awscli2
     ssm-session-manager-plugin
 
-    # terminal
+    # shell
+    direnv
     mise
     starship
-    direnv
-    fd
-    fzf
-    ripgrep
-    yazi
-    zellij
     zsh-autosuggestions
     zsh-syntax-highlighting
-    herdr
 
-    dotnet-sdk_10
+    # cli
+    aria2
+    fd
+    fzf
+    herdr
+    jq
+    ripgrep
+    tree
+    yazi
+    zellij
+
     # git
-    git
-    git-lfs
+    act
+    delta
     gh
     ghq
+    git
+    git-lfs
     lazygit
     lefthook
-    delta
 
     # terraform / infra
+    atlas
     tenv
     terraform-ls
-    atlas
+    tflint
 
-    # editor / tools
-    neovim
+    # editors / language tools
     helix
-    aria2
-    marp-cli
-    mint
-    mysql84
-    pkg-config
+    neovim
     tinymist
 
-    # # network
-    # tailscale
+    # docs
+    marp-cli
+    mint
+
+    # database
+    mysql84
+
+    # runtime
+    dotnet-sdk_10
+    pkg-config
 
     # nix
+    nh
     nixd
     nixfmt
-    nh
+
+    # network
+    # tailscale
   ];
 
   programs.direnv = {
