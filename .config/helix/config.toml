@@ -1,0 +1,25 @@
+theme = "everforest_dark"
+
+[editor]
+line-number = "relative"
+auto-format = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"     # デフォルトで block なので実際には指定する必要はない
+select = "underline"
+
+[keys.normal]
+C-y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh"
+C-s = ":w"
+C-q = ":wq"
+
+[keys.insert]
+C-s = ":w"
+C-q = ":wq"
+
+[editor.file-picker]
+hidden = false
+
+[editor.auto-save]
+after-delay.enable = true

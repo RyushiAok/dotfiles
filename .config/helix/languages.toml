@@ -1,0 +1,9 @@
+[[language]]
+name = "tfvars"
+auto-format = true
+formatter = { command = "terraform", args = ["fmt", "-"] }
+
+[[language]]
+name = "python"
+auto-format = true
+formatter = { command = "ruff", args = ["format", "--stdin-filename", "%{buffer_name}", "-"] }
