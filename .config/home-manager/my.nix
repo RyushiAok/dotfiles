@@ -90,9 +90,12 @@
       email = "55625375+RyushiAok@users.noreply.github.com";
     };
     ignores = [
+      "**/.claude/settings.local.json"
       "**/.envrc"
       "**/.direnv/"
       "**/.tmp/"
+      "**/.serena/"
+      "**/.DS_STORE"
     ];
     lfs = {
       enable = true;
