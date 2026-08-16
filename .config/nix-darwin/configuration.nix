@@ -1,4 +1,14 @@
 { pkgs, user, ... }:
+let
+  gitIgnore = pkgs.writeText "git-ignore" ''
+    **/.claude/settings.local.json
+    **/.envrc
+    **/.direnv/
+    **/.tmp/
+    **/.serena/
+    **/.DS_STORE
+  '';
+in
 {
 
   system.stateVersion = 5;
@@ -82,6 +92,7 @@
 
     # database
     mysql84
+    redis
 
     # runtime
     dotnet-sdk_10
@@ -122,7 +133,7 @@
       export PATH="$HOME/.dotnet/tools:$PATH"
       ghq-jump-widget() {
         local repo
-        repo=$({ ghq list -p; } | fzf --height 50% --reverse --prompt="ghq> ") || return
+        repo=$({ ghq list -p; echo "$HOME/.agents"; } | fzf --height 50% --reverse --prompt="ghq> ") || return
         BUFFER="cd $repo"
         zle accept-line
       }
@@ -170,4 +181,10 @@
       noto-fonts-cjk-serif
     ];
   };
+
+  system.activationScripts.postActivation.text = ''
+    mkdir -p /Users/${user}/.config/git
+    install -m 644 ${gitIgnore} /Users/${user}/.config/git/ignore
+    chown ${user}:staff /Users/${user}/.config/git/ignore
+  '';
 }
