@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -41,6 +46,8 @@
     ruff
     uv
 
+    codex
+
     # git
     gh
     lefthook
@@ -73,7 +80,7 @@
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
   };
 
   # Let Home Manager install and manage itself.
@@ -156,6 +163,7 @@
           pkgs.libxcrypt
         ]
       }:$PKG_CONFIG_PATH"
+      export DOTNET_ROOT="${config.home.sessionVariables.DOTNET_ROOT}"
       export PATH="$HOME/.dotnet/tools:$PATH"
       export GHQ_ROOT="$HOME/repo"
       export PATH="$HOME/.local/bin:$PATH"
@@ -255,6 +263,10 @@
       extraArgs = "--keep-since 14d --keep-one";
     };
   };
+
+  systemd.user.services.nh-clean.Service.Environment = lib.mkIf pkgs.stdenv.isLinux [
+    "\"NIX_CONFIG=experimental-features = nix-command flakes\""
+  ];
 
   fonts.fontconfig.enable = true;
 }
