@@ -160,6 +160,7 @@ in
       extraFlags = [ "--force-cleanup" ];
     };
     casks = [
+      "1password"
       "beekeeper-studio"
       "claude-code"
       "cursor"
