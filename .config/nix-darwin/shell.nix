@@ -28,8 +28,9 @@
 
       ghq-jump-widget() {
         local repo
-        repo=$({ ghq list -p; echo "$HOME/.agents"; } | fzf --height 50% --reverse --prompt="ghq> ") || return
+        repo=$({ ghq list -p; echo "$HOME/.agents"; } | fzf --height 50% --reverse --prompt="ghq> ") || { zle reset-prompt; return; }
         BUFFER="cd $repo"
+        zle reset-prompt
         zle accept-line
       }
       zle -N ghq-jump-widget
@@ -37,12 +38,12 @@
 
       ghq-copy-path-widget() {
         local repo
-        repo=$({ ghq list -p; echo "$HOME/.agents"; } | fzf --height 50% --reverse --prompt="ghq (copy)> ") || return
+        repo=$({ ghq list -p; echo "$HOME/.agents"; } | fzf --height 50% --reverse --prompt="ghq (copy)> ") || { zle reset-prompt; return; }
         echo -n "$repo" | pbcopy
-        zle -M "Copied: $repo"
+        zle reset-prompt
       }
       zle -N ghq-copy-path-widget
-      bindkey '^[[70;6u' ghq-copy-path-widget # Ctrl-Shift-f (CSI u)
+      bindkey '^y' ghq-copy-path-widget # Ctrl-y
 
       unsetopt correct correctall
 
