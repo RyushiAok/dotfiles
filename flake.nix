@@ -32,14 +32,24 @@
       ];
     in
     {
-      packages = forAllSystems (system: {
-        cleanup-nix-backups = nixpkgs.legacyPackages.${system}.writeShellScriptBin "cleanup-nix-backups" ''
-          #!/bin/bash
-          set -euo pipefail
-          sudo find /etc -maxdepth 3 -name "*.backup-before-nix" 2>/dev/null | tee /dev/stderr
-          sudo find /etc -maxdepth 3 -name "*.backup-before-nix" -delete 2>/dev/null
-        '';
-      });
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
+        {
+          atlas-standard = pkgs.callPackage ./pkgs/atlas-standard.nix { };
+          cleanup-nix-backups = pkgs.writeShellScriptBin "cleanup-nix-backups" ''
+            #!/bin/bash
+            set -euo pipefail
+            sudo find /etc -maxdepth 3 -name "*.backup-before-nix" 2>/dev/null | tee /dev/stderr
+            sudo find /etc -maxdepth 3 -name "*.backup-before-nix" -delete 2>/dev/null
+          '';
+        }
+      );
 
       homeConfigurations = {
         "linux" = home-manager.lib.homeManagerConfiguration {

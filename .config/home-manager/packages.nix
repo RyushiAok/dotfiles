@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ outputs, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -9,6 +9,7 @@
     act
     dotnet-sdk_10
     tenv
+    outputs.packages.${pkgs.stdenv.hostPlatform.system}.atlas-standard
 
     icu
     libxml2
