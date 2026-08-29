@@ -8,6 +8,7 @@
     sccache
     act
     dotnet-sdk_10
+    tenv
 
     icu
     libxml2
