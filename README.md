@@ -16,7 +16,7 @@ nix --extra-experimental-features 'nix-command flakes' \
   switch --flake .#linux --impure
 
 # 2回目以降
-nix run home-manager/master -- switch --flake .#linux --impure
+nix run home-manager/master -- switch -b backup --flake .#linux --impure
 ```
 
 **mac**

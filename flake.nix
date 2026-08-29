@@ -45,7 +45,7 @@
         "linux" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./.config/home-manager/my.nix ];
+          modules = [ ./.config/home-manager/configuration.nix ];
         };
       };
       darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
