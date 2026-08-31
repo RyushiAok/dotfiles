@@ -13,6 +13,9 @@
     zsh-autosuggestions
     zsh-syntax-highlighting
 
+    # 1password
+    _1password-cli
+
     # cli
     aria2
     fd
