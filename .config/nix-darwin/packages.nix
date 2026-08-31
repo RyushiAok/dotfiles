@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ outputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # aws
@@ -38,7 +38,7 @@
     lefthook
 
     # terraform / infra
-    atlas
+    outputs.packages.${pkgs.stdenv.hostPlatform.system}.atlas-standard
     tenv
     terraform-ls
     tflint
