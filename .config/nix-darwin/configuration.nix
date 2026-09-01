@@ -8,6 +8,8 @@ let
     **/.serena/
     **/.DS_STORE
   '';
+
+  dotfilesDir = "/Users/${user}/repo/ryushiaok/dotfiles";
 in
 {
   imports = [
@@ -56,5 +58,10 @@ in
     mkdir -p /Users/${user}/.config/git
     install -m 644 ${gitIgnore} /Users/${user}/.config/git/ignore
     chown ${user}:staff /Users/${user}/.config/git/ignore
+
+    if [ -d /Users/${user}/.config/direnv ] && [ ! -L /Users/${user}/.config/direnv ]; then
+      rm -rf /Users/${user}/.config/direnv
+    fi
+    ln -sfn ${dotfilesDir}/.config/direnv /Users/${user}/.config/direnv
   '';
 }

@@ -43,11 +43,11 @@
         {
           atlas-standard = pkgs.callPackage ./pkgs/atlas-standard.nix { };
           cleanup-nix-backups = pkgs.writeShellScriptBin "cleanup-nix-backups" ''
-            #!/bin/bash
             set -euo pipefail
             sudo find /etc -maxdepth 3 -name "*.backup-before-nix" 2>/dev/null | tee /dev/stderr
             sudo find /etc -maxdepth 3 -name "*.backup-before-nix" -delete 2>/dev/null
           '';
+          sync-secrets = pkgs.writeShellScriptBin "sync-secrets" (builtins.readFile ./.config/nix-darwin/scripts/sync-secrets.sh);
         }
       );
 

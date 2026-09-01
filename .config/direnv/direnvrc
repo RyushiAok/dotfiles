@@ -1,0 +1,18 @@
+keychain_export() {
+  local name="$1"
+  local val
+  val=$(/usr/bin/security find-generic-password -a "$USER" -s "$name" -w 2>/dev/null) || return 0
+  export "${name}=${val}"
+}
+
+load_keychain_env() {
+  local env_file="${1:-$HOME/.config/direnv/.env.op}"
+  [[ -f "$env_file" ]] || return 0
+  watch_file "$env_file"
+  while IFS='=' read -r key _; do
+    [[ -z "$key" || "$key" = \#* ]] && continue
+    keychain_export "$key"
+  done < "$env_file"
+}
+
+load_keychain_env
