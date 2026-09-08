@@ -9,7 +9,7 @@
     };
     casks = [
       "1password"
-      "1password-cli"
+      "1password-cli@beta"
       "beekeeper-studio"
       "claude-code"
       "cursor"
