@@ -55,6 +55,10 @@
     '';
   };
 
+  environment.variables = {
+    SOPS_EDITOR = "nvim";
+  };
+
   environment.shellAliases = {
     ze = "zellij";
     zef = "zellij plugin -- filepicker";

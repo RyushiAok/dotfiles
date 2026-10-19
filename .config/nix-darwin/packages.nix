@@ -53,6 +53,9 @@
     mysql84
     redis
 
+    # secrets
+    sops
+
     # runtime
     dotnet-sdk_10
     pkg-config
