@@ -5,11 +5,19 @@ updates:
     schedule:
       interval: daily
     cooldown:
-      default-days: 7
+      default-days: 3
+    groups:
+      flake-inputs:
+        patterns:
+          - "*"
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: daily
     cooldown:
-      default-days: 7
+      default-days: 3
+    groups:
+      github-actions:
+        patterns:
+          - "*"
