@@ -22,6 +22,8 @@
         case ":$PATH:" in *":/opt/homebrew/sbin:"*) ;; *) export PATH="$PATH:/opt/homebrew/sbin" ;; esac
       }
 
+      [[ -f "$HOME/.agents/env.zsh" ]] && source "$HOME/.agents/env.zsh"
+
       export GHQ_ROOT="$HOME/repo"
       export DOTNET_ROOT="${pkgs.dotnet-sdk_10}/share/dotnet"
       export DOTNET_ROOT_ARM64="$DOTNET_ROOT"
