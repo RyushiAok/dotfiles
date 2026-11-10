@@ -22,7 +22,7 @@
         case ":$PATH:" in *":/opt/homebrew/sbin:"*) ;; *) export PATH="$PATH:/opt/homebrew/sbin" ;; esac
       }
 
-      [[ -f "$HOME/.agents/env.zsh" ]] && source "$HOME/.agents/env.zsh"
+      source ${./scripts/keychain-env.zsh}
 
       export GHQ_ROOT="$HOME/repo"
       export DOTNET_ROOT="${pkgs.dotnet-sdk_10}/share/dotnet"

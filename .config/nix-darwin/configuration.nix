@@ -63,5 +63,6 @@ in
       rm -rf /Users/${user}/.config/direnv
     fi
     ln -sfn ${dotfilesDir}/.config/direnv /Users/${user}/.config/direnv
+    ln -sfn ${dotfilesDir}/.config/secrets /Users/${user}/.config/secrets
   '';
 }
