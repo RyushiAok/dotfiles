@@ -27,6 +27,7 @@
   nix.package = pkgs.nix;
 
   home.file = {
+    ".config/herdr/config.toml".source = ../herdr/config.toml;
     ".config/karabiner".source = ../karabiner;
     ".config/nvim".source = ../nvim;
     ".config/zellij".source = ../zellij;

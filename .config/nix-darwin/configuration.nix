@@ -64,5 +64,9 @@ in
     fi
     ln -sfn ${dotfilesDir}/.config/direnv /Users/${user}/.config/direnv
     ln -sfn ${dotfilesDir}/.config/secrets /Users/${user}/.config/secrets
+
+    mkdir -p /Users/${user}/.config/herdr
+    chown ${user}:staff /Users/${user}/.config/herdr
+    ln -sfn ${dotfilesDir}/.config/herdr/config.toml /Users/${user}/.config/herdr/config.toml
   '';
 }
